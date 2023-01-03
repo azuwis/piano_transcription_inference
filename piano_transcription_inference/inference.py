@@ -58,6 +58,8 @@ class PianoTranscription(object):
             self.model.to(device)
             print('GPU number: {}'.format(torch.cuda.device_count()))
             self.model = torch.nn.DataParallel(self.model)
+        elif 'mps' in str(device):
+            self.model.to(device)
         else:
             print('Using CPU.')
 
